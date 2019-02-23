@@ -70,7 +70,9 @@
 
 -(void)clickCenterAddBtn:(UIButton *)sender
 {
-    NSLog(@"center btn clicked");
+    if (self.addBtnDelegate && [self.addBtnDelegate respondsToSelector:@selector(centerAddBtnDidClicked:)]) {
+        [self.addBtnDelegate centerAddBtnDidClicked:sender];
+    }
 }
 
 @end

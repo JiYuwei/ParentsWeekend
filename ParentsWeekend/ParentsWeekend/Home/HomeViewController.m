@@ -21,7 +21,32 @@
 
 - (void)addNavgationItems
 {
+    UIBarButtonItem *scanItem = [self navgationItemWithNormalImage:[UIImage imageNamed:SCAN_N_ICON] HighlightedImage:[UIImage imageNamed:SCAN_S_ICON] action:@selector(scanItemClicked)];
+    self.navigationItem.leftBarButtonItem = scanItem;
     
+    UIBarButtonItem *fishItem = [self navgationItemWithNormalImage:[UIImage imageNamed:FISH_N_ICON] HighlightedImage:[UIImage imageNamed:FISH_S_ICON] action:@selector(fishItemClicked)];
+    self.navigationItem.rightBarButtonItem = fishItem;
+}
+
+- (UIBarButtonItem *)navgationItemWithNormalImage:(UIImage *)normalImage HighlightedImage:(UIImage *)highlightedImage action:(SEL)action
+{
+    UIButton *item = [UIButton buttonWithType:UIButtonTypeCustom];
+    [item setImage:normalImage forState:UIControlStateNormal];
+    [item setImage:highlightedImage forState:UIControlStateHighlighted];
+    [item addTarget:self action:action forControlEvents:UIControlEventTouchUpInside];
+    UIBarButtonItem *barItem = [[UIBarButtonItem alloc] initWithCustomView:item];
+    
+    return barItem;
+}
+
+-(void)scanItemClicked
+{
+    NSLog(@"scan clicked");
+}
+
+-(void)fishItemClicked
+{
+    NSLog(@"fish clicked");
 }
 
 /*

@@ -10,7 +10,16 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
+@protocol CenterAddBtnDelegate <NSObject>
+
+-(void)centerAddBtnDidClicked:(UIButton *)sender;
+
+@end
+
+
 @interface RootTabBar : UITabBar
+
+@property(nonatomic,weak) id <CenterAddBtnDelegate> addBtnDelegate;
 
 @end
 

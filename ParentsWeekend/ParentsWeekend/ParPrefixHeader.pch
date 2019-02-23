@@ -11,6 +11,7 @@
 
 #define ROOT_TITLE_COLOR  [UIColor colorWithRed:0.33 green:0.79 blue:0.9 alpha:1]
 
+//ROOT TabBar
 #define HOME_TITLE       @"首页"
 #define HOME_N_ICON      @"tabbar_icon_0"
 #define HOME_S_ICON      @"tabbar_icon_selected_0"
@@ -27,5 +28,10 @@
 #define ME_N_ICON        @"tabbar_icon_4"
 #define ME_S_ICON        @"tabbar_icon_selected_4"
 
+//Home
+#define SCAN_N_ICON      @"home_btn_scan2"
+#define SCAN_S_ICON      @"home_btn_scan1"
+#define FISH_N_ICON      @"home_btn_sign2"
+#define FISH_S_ICON      @"home_btn_sign1"
 
 #endif /* ParPrefixHeader_pch */

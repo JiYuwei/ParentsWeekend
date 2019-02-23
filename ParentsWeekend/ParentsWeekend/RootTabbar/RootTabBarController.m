@@ -13,7 +13,7 @@
 #import "MeViewController.h"
 #import "RootTabBar.h"
 
-@interface RootTabBarController ()
+@interface RootTabBarController () <CenterAddBtnDelegate>
 
 @end
 
@@ -23,7 +23,9 @@
     [super viewDidLoad];
     
     //KVC exchange Tabbar
-    [self setValue:[[RootTabBar alloc] init] forKey:@"tabBar"];
+    RootTabBar *rootBar = [[RootTabBar alloc] init];
+    rootBar.addBtnDelegate = self;
+    [self setValue:rootBar forKey:@"tabBar"];
     self.tabBar.translucent = NO;
     
     [self addChlidViewController];
@@ -63,6 +65,13 @@
     meNav.navigationBar.translucent = NO;
     
     self.viewControllers = @[homeNav,comNav,orderNav,meNav];
+}
+
+#pragma mark - CenterAddBtnDelegate
+
+-(void)centerAddBtnDidClicked:(UIButton *)sender
+{
+    NSLog(@"centerAddBtn clicked");
 }
 
 @end
