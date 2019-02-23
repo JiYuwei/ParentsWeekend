@@ -7,8 +7,11 @@
 //
 
 #import "HomeViewController.h"
+#import "HomeViewCell.h"
 
-@interface HomeViewController ()
+@interface HomeViewController () <UITableViewDataSource,UITableViewDelegate>
+
+@property(nonatomic,strong)UITableView *mainTableView;
 
 @end
 
@@ -16,10 +19,12 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    [self addNavgationItems];
+    [self addNavigationItems];
+    [self createMainUI];
 }
 
-- (void)addNavgationItems
+#pragma mark - NavigationItems
+- (void)addNavigationItems
 {
     UIBarButtonItem *scanItem = [self navgationItemWithNormalImage:[UIImage imageNamed:SCAN_N_ICON] HighlightedImage:[UIImage imageNamed:SCAN_S_ICON] action:@selector(scanItemClicked)];
     self.navigationItem.leftBarButtonItem = scanItem;
@@ -47,6 +52,48 @@
 -(void)fishItemClicked
 {
     NSLog(@"fish clicked");
+}
+
+#pragma mark - MainUI
+
+-(void)createMainUI
+{
+    if (!_mainTableView) {
+        _mainTableView = [[UITableView alloc] initWithFrame:FULL_BOUNDS style:UITableViewStylePlain];
+        _mainTableView.backgroundColor = VIEW_BG_COLOR;
+        _mainTableView.dataSource = self;
+        _mainTableView.delegate = self;
+        _mainTableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+        _mainTableView.tableFooterView = [[UIView alloc] init];
+        [_mainTableView registerClass:[HomeViewCell class] forCellReuseIdentifier:NSStringFromClass([HomeViewCell class])];
+        [self.view addSubview:_mainTableView];
+    }
+}
+
+
+#pragma mark - UITableViewDataSource & Delegate
+
+-(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    HomeViewCell *cell = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass([HomeViewCell class]) forIndexPath:indexPath];
+    
+    return cell;
+}
+
+-(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+    return 10;
+}
+
+-(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return 250;
+}
+
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    
 }
 
 /*

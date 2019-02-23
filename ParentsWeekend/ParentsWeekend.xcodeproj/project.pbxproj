@@ -913,6 +913,7 @@
 		09896C7222212CAF00A93119 /* ComViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 09896C7122212CAF00A93119 /* ComViewController.m */; };
 		09896C7522212CDA00A93119 /* OrderViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 09896C7422212CDA00A93119 /* OrderViewController.m */; };
 		09896C7822212CE700A93119 /* MeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 09896C7722212CE700A93119 /* MeViewController.m */; };
+		09896C7B22214F5B00A93119 /* HomeViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 09896C7A22214F5A00A93119 /* HomeViewCell.m */; };
 		54D1AD5EC13FF7A11E6A01B2 /* libPods-ParentsWeekend.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4E8E891CABFF1C2A71875458 /* libPods-ParentsWeekend.a */; };
 /* End PBXBuildFile section */
 
@@ -1855,6 +1856,8 @@
 		09896C7422212CDA00A93119 /* OrderViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = OrderViewController.m; sourceTree = "<group>"; };
 		09896C7622212CE700A93119 /* MeViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MeViewController.h; sourceTree = "<group>"; };
 		09896C7722212CE700A93119 /* MeViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MeViewController.m; sourceTree = "<group>"; };
+		09896C7922214F5A00A93119 /* HomeViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HomeViewCell.h; sourceTree = "<group>"; };
+		09896C7A22214F5A00A93119 /* HomeViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HomeViewCell.m; sourceTree = "<group>"; };
 		402C7B1AB0B114D769D1637E /* Pods-ParentsWeekend.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ParentsWeekend.debug.xcconfig"; path = "Target Support Files/Pods-ParentsWeekend/Pods-ParentsWeekend.debug.xcconfig"; sourceTree = "<group>"; };
 		462DEB13625D3A6AC64F0A61 /* Pods-ParentsWeekend.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ParentsWeekend.release.xcconfig"; path = "Target Support Files/Pods-ParentsWeekend/Pods-ParentsWeekend.release.xcconfig"; sourceTree = "<group>"; };
 		4E8E891CABFF1C2A71875458 /* libPods-ParentsWeekend.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-ParentsWeekend.a"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -2887,6 +2890,8 @@
 			children = (
 				09896C6D22212C9900A93119 /* HomeViewController.h */,
 				09896C6E22212C9900A93119 /* HomeViewController.m */,
+				09896C7922214F5A00A93119 /* HomeViewCell.h */,
+				09896C7A22214F5A00A93119 /* HomeViewCell.m */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -4002,6 +4007,7 @@
 				09896C7822212CE700A93119 /* MeViewController.m in Sources */,
 				09896C65222125F000A93119 /* RootTabBarController.m in Sources */,
 				09896C6C22212C5A00A93119 /* BaseViewController.m in Sources */,
+				09896C7B22214F5B00A93119 /* HomeViewCell.m in Sources */,
 				0984C5B7222115B800B8B681 /* main.m in Sources */,
 				09896C7522212CDA00A93119 /* OrderViewController.m in Sources */,
 				09896C7222212CAF00A93119 /* ComViewController.m in Sources */,

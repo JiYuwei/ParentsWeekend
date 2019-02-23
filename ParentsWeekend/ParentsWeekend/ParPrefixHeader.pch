@@ -8,8 +8,18 @@
 
 #ifndef ParPrefixHeader_pch
 #define ParPrefixHeader_pch
+//Improt 3rd Frameworks
+#import "Masonry.h"
 
+//Frame
+#define SCREEN_WIDTH      [UIScreen mainScreen].bounds.size.width
+#define SCREEN_HEIGHT     [UIScreen mainScreen].bounds.size.height
+#define TABBAR_HEIGHT     49
+#define NAVI_HEIGHT       64
+#define FULL_BOUNDS       CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT - TABBAR_HEIGHT - NAVI_HEIGHT)
+//COLOR
 #define ROOT_TITLE_COLOR  [UIColor colorWithRed:0.33 green:0.79 blue:0.9 alpha:1]
+#define VIEW_BG_COLOR     [UIColor colorWithRed:0.95 green:0.95 blue:0.95 alpha:1]
 
 //ROOT TabBar
 #define HOME_TITLE       @"首页"
