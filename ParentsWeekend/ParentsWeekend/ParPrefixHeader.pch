@@ -1,0 +1,31 @@
+//
+//  ParPrefixHeader.pch
+//  ParentsWeekend
+//
+//  Created by 纪宇伟 on 2019/2/23.
+//  Copyright © 2019 jyw. All rights reserved.
+//
+
+#ifndef ParPrefixHeader_pch
+#define ParPrefixHeader_pch
+
+#define ROOT_TITLE_COLOR  [UIColor colorWithRed:0.33 green:0.79 blue:0.9 alpha:1]
+
+#define HOME_TITLE       @"首页"
+#define HOME_N_ICON      @"tabbar_icon_0"
+#define HOME_S_ICON      @"tabbar_icon_selected_0"
+
+#define COM_TITLE        @"社区"
+#define COM_N_ICON       @"tabbar_icon_1"
+#define COM_S_ICON       @"tabbar_icon_selected_1"
+
+#define ORDER_TITLE      @"订单"
+#define ORDER_N_ICON     @"tabbar_icon_3"
+#define ORDER_S_ICON     @"tabbar_icon_selected_3"
+
+#define ME_TITLE         @"我的"
+#define ME_N_ICON        @"tabbar_icon_4"
+#define ME_S_ICON        @"tabbar_icon_selected_4"
+
+
+#endif /* ParPrefixHeader_pch */
