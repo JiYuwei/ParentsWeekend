@@ -7,6 +7,7 @@
 //
 
 #import "HomeViewCell.h"
+#import "HomeModel.h"
 
 @interface HomeViewCell ()
 
@@ -38,6 +39,7 @@
 -(void)layoutAllViews
 {
     [self.imgView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.height.equalTo(self.mas_width).multipliedBy(0.5);
         make.top.equalTo(self).offset(10);
         make.left.equalTo(self).offset(10);
         make.right.equalTo(self).offset(-10);
@@ -60,18 +62,29 @@
     
     [self.priceLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(self.imgView.mas_bottom).offset(-45);
-        make.left.equalTo(self).offset(0);
+        make.left.equalTo(self).offset(-20);
         make.size.mas_equalTo(CGSizeMake(100, 35));
     }];
 }
 
 #pragma mark - Overwrite Setter & Getter
 
+-(void)setLists:(Lists *)lists
+{
+    if (_lists != lists) {
+        _lists = lists;
+    }
+    [self.imgView sd_setImageWithURL:[NSURL URLWithString:_lists.pic] placeholderImage:[UIImage imageNamed:@"act_default"]];
+    self.titleLabel.text = _lists.name;
+    self.priceLabel.text = [NSString stringWithFormat:@"        ¥ %@",_lists.real_price];
+    self.saleLabel.text = _lists.use_num;
+}
+
 -(UIImageView *)imgView
 {
     if (!_imgView) {
         _imgView = [[UIImageView alloc] init];
-        _imgView.backgroundColor = [UIColor blueColor];
+//        _imgView.backgroundColor = [UIColor blueColor];
         [self addSubview:_imgView];
     }
     return _imgView;
@@ -81,8 +94,9 @@
 {
     if (!_titleLabel) {
         _titleLabel = [[UILabel alloc] init];
-        _titleLabel.backgroundColor = [UIColor lightGrayColor];
+//        _titleLabel.backgroundColor = [UIColor lightGrayColor];
         _titleLabel.text = @"This is Title";
+        _titleLabel.numberOfLines = 0;
         [self addSubview:_titleLabel];
     }
     return _titleLabel;
@@ -92,8 +106,13 @@
 {
     if (!_priceLabel) {
         _priceLabel = [[UILabel alloc] init];
-        _priceLabel.backgroundColor = [UIColor redColor];
-        _priceLabel.text = @"$ 100";
+        _priceLabel.backgroundColor = [UIColor orangeColor];
+        _priceLabel.text = @"$ 0";
+        _priceLabel.textColor = [UIColor whiteColor];
+        _priceLabel.font = [UIFont systemFontOfSize:20];
+//        _priceLabel.textAlignment = NSTextAlignmentRight;
+        _priceLabel.layer.cornerRadius = 10;
+        _priceLabel.layer.masksToBounds = YES;
         [self addSubview:_priceLabel];
     }
     return _priceLabel;
@@ -103,8 +122,10 @@
 {
     if (!_saleLabel) {
         _saleLabel = [[UILabel alloc] init];
-        _saleLabel.backgroundColor = [UIColor greenColor];
+//        _saleLabel.backgroundColor = [UIColor greenColor];
         _saleLabel.text = @"sale";
+        _saleLabel.textColor = [UIColor lightGrayColor];
+        _saleLabel.font = [UIFont systemFontOfSize:12];
         [self addSubview:_saleLabel];
     }
     return _saleLabel;

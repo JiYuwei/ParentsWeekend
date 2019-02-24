@@ -9,8 +9,11 @@
 #import <UIKit/UIKit.h>
 
 NS_ASSUME_NONNULL_BEGIN
+@class Lists;
 
 @interface HomeViewCell : UITableViewCell
+
+@property(nonatomic,strong)Lists *lists;
 
 @end
 

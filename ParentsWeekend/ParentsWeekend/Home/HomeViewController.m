@@ -8,10 +8,12 @@
 
 #import "HomeViewController.h"
 #import "HomeViewCell.h"
+#import "HomeModel.h"
 
 @interface HomeViewController () <UITableViewDataSource,UITableViewDelegate>
 
 @property(nonatomic,strong)UITableView *mainTableView;
+@property(nonatomic,strong)HomeModel *homeModel;
 
 @end
 
@@ -20,7 +22,24 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self addNavigationItems];
-    [self createMainUI];
+    [self prepareData];
+    [self retrieveHomePageData];
+}
+//lazy load
+-(UITableView *)mainTableView
+{
+    if (!_mainTableView) {
+        _mainTableView = [[UITableView alloc] initWithFrame:FULL_BOUNDS style:UITableViewStylePlain];
+        _mainTableView.backgroundColor = VIEW_BG_COLOR;
+        _mainTableView.dataSource = self;
+        _mainTableView.delegate = self;
+        _mainTableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+        _mainTableView.tableFooterView = [[UIView alloc] init];
+        [_mainTableView registerClass:[HomeViewCell class] forCellReuseIdentifier:NSStringFromClass([HomeViewCell class])];
+        [self.view addSubview:_mainTableView];
+    }
+    
+    return _mainTableView;
 }
 
 #pragma mark - NavigationItems
@@ -54,40 +73,48 @@
     NSLog(@"fish clicked");
 }
 
-#pragma mark - MainUI
+#pragma mark - PrepareData
 
--(void)createMainUI
+-(void)prepareData
 {
-    if (!_mainTableView) {
-        _mainTableView = [[UITableView alloc] initWithFrame:FULL_BOUNDS style:UITableViewStylePlain];
-        _mainTableView.backgroundColor = VIEW_BG_COLOR;
-        _mainTableView.dataSource = self;
-        _mainTableView.delegate = self;
-        _mainTableView.separatorStyle = UITableViewCellSeparatorStyleNone;
-        _mainTableView.tableFooterView = [[UIView alloc] init];
-        [_mainTableView registerClass:[HomeViewCell class] forCellReuseIdentifier:NSStringFromClass([HomeViewCell class])];
-        [self.view addSubview:_mainTableView];
-    }
+    self.mainTableView.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
+        [self retrieveHomePageData];
+    }];
 }
 
+-(void)retrieveHomePageData
+{
+    [JYNetworkRequest retrieveJsonWithPrepare:nil finish:^{
+        [self.mainTableView.mj_header endRefreshing];
+    } needCache:YES requestType:HTTPRequestTypeGET fromURL:HOME_URL parameters:nil success:^(NSDictionary *json) {
+        NSLog(@"%@",json);
+        if (json) {
+            self.homeModel = [HomeModel mj_objectWithKeyValues:json];
+            [self.mainTableView reloadData];
+        }
+    } failure:^(NSError *error, BOOL needCache, NSDictionary *cachedJson) {
+        NSLog(@"%@\n%@",error,cachedJson);
+    }];
+}
 
 #pragma mark - UITableViewDataSource & Delegate
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     HomeViewCell *cell = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass([HomeViewCell class]) forIndexPath:indexPath];
+    cell.lists = self.homeModel.lists[indexPath.row];
     
     return cell;
 }
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 10;
+    return self.homeModel.lists.count;
 }
 
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    return 250;
+    return 280;
 }
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath

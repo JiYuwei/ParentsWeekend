@@ -914,6 +914,9 @@
 		09896C7522212CDA00A93119 /* OrderViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 09896C7422212CDA00A93119 /* OrderViewController.m */; };
 		09896C7822212CE700A93119 /* MeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 09896C7722212CE700A93119 /* MeViewController.m */; };
 		09896C7B22214F5B00A93119 /* HomeViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 09896C7A22214F5A00A93119 /* HomeViewCell.m */; };
+		09C41ABB222284F4007D8C28 /* JYNetworkRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 09C41AB9222284F4007D8C28 /* JYNetworkRequest.m */; };
+		09C41ABC222284F4007D8C28 /* JYRequestCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 09C41ABA222284F4007D8C28 /* JYRequestCache.m */; };
+		09C41AC02222A2C5007D8C28 /* HomeModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 09C41ABF2222A2C5007D8C28 /* HomeModel.m */; };
 		54D1AD5EC13FF7A11E6A01B2 /* libPods-ParentsWeekend.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4E8E891CABFF1C2A71875458 /* libPods-ParentsWeekend.a */; };
 /* End PBXBuildFile section */
 
@@ -1858,6 +1861,12 @@
 		09896C7722212CE700A93119 /* MeViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MeViewController.m; sourceTree = "<group>"; };
 		09896C7922214F5A00A93119 /* HomeViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HomeViewCell.h; sourceTree = "<group>"; };
 		09896C7A22214F5A00A93119 /* HomeViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HomeViewCell.m; sourceTree = "<group>"; };
+		09C41AB7222284F3007D8C28 /* JYRequestCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JYRequestCache.h; sourceTree = "<group>"; };
+		09C41AB8222284F4007D8C28 /* JYNetworkRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JYNetworkRequest.h; sourceTree = "<group>"; };
+		09C41AB9222284F4007D8C28 /* JYNetworkRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JYNetworkRequest.m; sourceTree = "<group>"; };
+		09C41ABA222284F4007D8C28 /* JYRequestCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JYRequestCache.m; sourceTree = "<group>"; };
+		09C41ABE2222A2C5007D8C28 /* HomeModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HomeModel.h; sourceTree = "<group>"; };
+		09C41ABF2222A2C5007D8C28 /* HomeModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HomeModel.m; sourceTree = "<group>"; };
 		402C7B1AB0B114D769D1637E /* Pods-ParentsWeekend.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ParentsWeekend.debug.xcconfig"; path = "Target Support Files/Pods-ParentsWeekend/Pods-ParentsWeekend.debug.xcconfig"; sourceTree = "<group>"; };
 		462DEB13625D3A6AC64F0A61 /* Pods-ParentsWeekend.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ParentsWeekend.release.xcconfig"; path = "Target Support Files/Pods-ParentsWeekend/Pods-ParentsWeekend.release.xcconfig"; sourceTree = "<group>"; };
 		4E8E891CABFF1C2A71875458 /* libPods-ParentsWeekend.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-ParentsWeekend.a"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -1914,6 +1923,7 @@
 		0984C5A6222115B700B8B681 /* ParentsWeekend */ = {
 			isa = PBXGroup;
 			children = (
+				09C41AB3222281E0007D8C28 /* Network */,
 				09896C6922212C3700A93119 /* Base */,
 				09896C622221258200A93119 /* RootTabbar */,
 				09896C612221257C00A93119 /* Home */,
@@ -2888,6 +2898,7 @@
 		09896C612221257C00A93119 /* Home */ = {
 			isa = PBXGroup;
 			children = (
+				09C41ABD22229D46007D8C28 /* Model */,
 				09896C6D22212C9900A93119 /* HomeViewController.h */,
 				09896C6E22212C9900A93119 /* HomeViewController.m */,
 				09896C7922214F5A00A93119 /* HomeViewCell.h */,
@@ -2914,6 +2925,26 @@
 				09896C6B22212C5A00A93119 /* BaseViewController.m */,
 			);
 			path = Base;
+			sourceTree = "<group>";
+		};
+		09C41AB3222281E0007D8C28 /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				09C41AB8222284F4007D8C28 /* JYNetworkRequest.h */,
+				09C41AB9222284F4007D8C28 /* JYNetworkRequest.m */,
+				09C41AB7222284F3007D8C28 /* JYRequestCache.h */,
+				09C41ABA222284F4007D8C28 /* JYRequestCache.m */,
+			);
+			path = Network;
+			sourceTree = "<group>";
+		};
+		09C41ABD22229D46007D8C28 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				09C41ABE2222A2C5007D8C28 /* HomeModel.h */,
+				09C41ABF2222A2C5007D8C28 /* HomeModel.m */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 		6C948F11F5A45B031B62BE95 /* Frameworks */ = {
@@ -3984,12 +4015,14 @@
 			);
 			inputPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-ParentsWeekend/Pods-ParentsWeekend-resources.sh",
+				"${PODS_ROOT}/MJRefresh/MJRefresh/MJRefresh.bundle",
 				"${PODS_ROOT}/SVProgressHUD/SVProgressHUD/SVProgressHUD.bundle",
 			);
 			name = "[CP] Copy Pods Resources";
 			outputFileListPaths = (
 			);
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/MJRefresh.bundle",
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/SVProgressHUD.bundle",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -4011,9 +4044,12 @@
 				0984C5B7222115B800B8B681 /* main.m in Sources */,
 				09896C7522212CDA00A93119 /* OrderViewController.m in Sources */,
 				09896C7222212CAF00A93119 /* ComViewController.m in Sources */,
+				09C41AC02222A2C5007D8C28 /* HomeModel.m in Sources */,
 				0984C5A9222115B700B8B681 /* AppDelegate.m in Sources */,
 				09896C682221288400A93119 /* RootTabBar.m in Sources */,
 				09896C6F22212C9900A93119 /* HomeViewController.m in Sources */,
+				09C41ABB222284F4007D8C28 /* JYNetworkRequest.m in Sources */,
+				09C41ABC222284F4007D8C28 /* JYRequestCache.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4171,6 +4207,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CLANG_WARN_STRICT_PROTOTYPES = NO;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 368DWFGUA5;
 				INFOPLIST_FILE = ParentsWeekend/Info.plist;
@@ -4191,6 +4228,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CLANG_WARN_STRICT_PROTOTYPES = NO;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 368DWFGUA5;
 				INFOPLIST_FILE = ParentsWeekend/Info.plist;
