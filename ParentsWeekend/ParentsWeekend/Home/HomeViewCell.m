@@ -74,7 +74,7 @@
     if (_lists != lists) {
         _lists = lists;
     }
-    [self.imgView sd_setImageWithURL:[NSURL URLWithString:_lists.pic] placeholderImage:[UIImage imageNamed:@"act_default"]];
+    [self.imgView sd_setImageWithURL:[NSURL URLWithString:_lists.pic] placeholderImage:[UIImage imageNamed:IMG_PLACEHOLDER]];
     self.titleLabel.text = _lists.name;
     self.priceLabel.text = [NSString stringWithFormat:@"        ¥ %@",_lists.real_price];
     self.saleLabel.text = _lists.use_num;

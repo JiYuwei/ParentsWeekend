@@ -89,6 +89,7 @@
     } needCache:YES requestType:HTTPRequestTypeGET fromURL:HOME_URL parameters:nil success:^(NSDictionary *json) {
         NSLog(@"%@",json);
         if (json) {
+            self.homeModel = nil;
             self.homeModel = [HomeModel mj_objectWithKeyValues:json];
             [self.mainTableView reloadData];
         }

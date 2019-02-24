@@ -41,12 +41,13 @@
 #define ME_N_ICON        @"tabbar_icon_4"
 #define ME_S_ICON        @"tabbar_icon_selected_4"
 
-//Home
+//Image Icon
 #define SCAN_N_ICON      @"home_btn_scan2"
 #define SCAN_S_ICON      @"home_btn_scan1"
 #define FISH_N_ICON      @"home_btn_sign2"
 #define FISH_S_ICON      @"home_btn_sign1"
 
+#define IMG_PLACEHOLDER  @"act_default"
 
 //Request URL
 #define HOME_URL         @"https://www.qubaobei.com/ios/weekend/home_page_v32.php?mobile=104&version=220&cate=0&city_id=0&lat=33.01732779566323&limit=1&lon=119.011410840779&mobile_type=iPhone&mobile_udid=b97e08abb4cb973f9da7bf5324067a344803236f&page=1&user_id=0"
