@@ -14,6 +14,8 @@
 #import "MJExtension.h"
 #import "UIImageView+WebCache.h"
 #import "JYNetworkRequest.h"
+#import "BearRefreshHeader.h"
+#import "URLJointTool.h"
 //Frame
 #define SCREEN_WIDTH      [UIScreen mainScreen].bounds.size.width
 #define SCREEN_HEIGHT     [UIScreen mainScreen].bounds.size.height
@@ -50,7 +52,9 @@
 #define IMG_PLACEHOLDER  @"act_default"
 
 //Request URL
-#define HOME_URL         @"https://www.qubaobei.com/ios/weekend/home_page_v32.php?mobile=104&version=220&cate=0&city_id=0&lat=33.01732779566323&limit=1&lon=119.011410840779&mobile_type=iPhone&mobile_udid=b97e08abb4cb973f9da7bf5324067a344803236f&page=1&user_id=0"
+#define HOST_URL         @"https://www.qubaobei.com/ios/weekend"
+#define HOME_PATH        @"/home_page_v32.php"
+//?mobile=104&version=220&cate=0&city_id=0&lat=33.01732779566323&limit=1&lon=119.011410840779&mobile_type=iPhone&mobile_udid=b97e08abb4cb973f9da7bf5324067a344803236f&page=1&user_id=0"
 
 
 #endif /* ParPrefixHeader_pch */

@@ -917,6 +917,8 @@
 		09C41ABB222284F4007D8C28 /* JYNetworkRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 09C41AB9222284F4007D8C28 /* JYNetworkRequest.m */; };
 		09C41ABC222284F4007D8C28 /* JYRequestCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 09C41ABA222284F4007D8C28 /* JYRequestCache.m */; };
 		09C41AC02222A2C5007D8C28 /* HomeModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 09C41ABF2222A2C5007D8C28 /* HomeModel.m */; };
+		09C41AC52222D984007D8C28 /* BearRefreshHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = 09C41AC42222D984007D8C28 /* BearRefreshHeader.m */; };
+		09C41AC82222E97A007D8C28 /* URLJointTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 09C41AC72222E97A007D8C28 /* URLJointTool.m */; };
 		54D1AD5EC13FF7A11E6A01B2 /* libPods-ParentsWeekend.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4E8E891CABFF1C2A71875458 /* libPods-ParentsWeekend.a */; };
 /* End PBXBuildFile section */
 
@@ -1867,6 +1869,10 @@
 		09C41ABA222284F4007D8C28 /* JYRequestCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JYRequestCache.m; sourceTree = "<group>"; };
 		09C41ABE2222A2C5007D8C28 /* HomeModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HomeModel.h; sourceTree = "<group>"; };
 		09C41ABF2222A2C5007D8C28 /* HomeModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HomeModel.m; sourceTree = "<group>"; };
+		09C41AC32222D984007D8C28 /* BearRefreshHeader.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BearRefreshHeader.h; sourceTree = "<group>"; };
+		09C41AC42222D984007D8C28 /* BearRefreshHeader.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BearRefreshHeader.m; sourceTree = "<group>"; };
+		09C41AC62222E97A007D8C28 /* URLJointTool.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = URLJointTool.h; sourceTree = "<group>"; };
+		09C41AC72222E97A007D8C28 /* URLJointTool.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = URLJointTool.m; sourceTree = "<group>"; };
 		402C7B1AB0B114D769D1637E /* Pods-ParentsWeekend.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ParentsWeekend.debug.xcconfig"; path = "Target Support Files/Pods-ParentsWeekend/Pods-ParentsWeekend.debug.xcconfig"; sourceTree = "<group>"; };
 		462DEB13625D3A6AC64F0A61 /* Pods-ParentsWeekend.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ParentsWeekend.release.xcconfig"; path = "Target Support Files/Pods-ParentsWeekend/Pods-ParentsWeekend.release.xcconfig"; sourceTree = "<group>"; };
 		4E8E891CABFF1C2A71875458 /* libPods-ParentsWeekend.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-ParentsWeekend.a"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -1923,6 +1929,7 @@
 		0984C5A6222115B700B8B681 /* ParentsWeekend */ = {
 			isa = PBXGroup;
 			children = (
+				09C41AC12222D94F007D8C28 /* Tools */,
 				09C41AB3222281E0007D8C28 /* Network */,
 				09896C6922212C3700A93119 /* Base */,
 				09896C622221258200A93119 /* RootTabbar */,
@@ -2945,6 +2952,17 @@
 				09C41ABF2222A2C5007D8C28 /* HomeModel.m */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		09C41AC12222D94F007D8C28 /* Tools */ = {
+			isa = PBXGroup;
+			children = (
+				09C41AC32222D984007D8C28 /* BearRefreshHeader.h */,
+				09C41AC42222D984007D8C28 /* BearRefreshHeader.m */,
+				09C41AC62222E97A007D8C28 /* URLJointTool.h */,
+				09C41AC72222E97A007D8C28 /* URLJointTool.m */,
+			);
+			path = Tools;
 			sourceTree = "<group>";
 		};
 		6C948F11F5A45B031B62BE95 /* Frameworks */ = {
@@ -4039,6 +4057,7 @@
 			files = (
 				09896C7822212CE700A93119 /* MeViewController.m in Sources */,
 				09896C65222125F000A93119 /* RootTabBarController.m in Sources */,
+				09C41AC82222E97A007D8C28 /* URLJointTool.m in Sources */,
 				09896C6C22212C5A00A93119 /* BaseViewController.m in Sources */,
 				09896C7B22214F5B00A93119 /* HomeViewCell.m in Sources */,
 				0984C5B7222115B800B8B681 /* main.m in Sources */,
@@ -4049,6 +4068,7 @@
 				09896C682221288400A93119 /* RootTabBar.m in Sources */,
 				09896C6F22212C9900A93119 /* HomeViewController.m in Sources */,
 				09C41ABB222284F4007D8C28 /* JYNetworkRequest.m in Sources */,
+				09C41AC52222D984007D8C28 /* BearRefreshHeader.m in Sources */,
 				09C41ABC222284F4007D8C28 /* JYRequestCache.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

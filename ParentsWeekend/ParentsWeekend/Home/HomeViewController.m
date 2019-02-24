@@ -22,8 +22,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self addNavigationItems];
-    [self prepareData];
-    [self retrieveHomePageData];
+    [self prepareRefreshData];
 }
 //lazy load
 -(UITableView *)mainTableView
@@ -36,6 +35,11 @@
         _mainTableView.separatorStyle = UITableViewCellSeparatorStyleNone;
         _mainTableView.tableFooterView = [[UIView alloc] init];
         [_mainTableView registerClass:[HomeViewCell class] forCellReuseIdentifier:NSStringFromClass([HomeViewCell class])];
+        //Turn Off Self-Sizing
+        _mainTableView.estimatedRowHeight =0;
+        _mainTableView.estimatedSectionHeaderHeight =0;
+        _mainTableView.estimatedSectionFooterHeight =0;
+        
         [self.view addSubview:_mainTableView];
     }
     
@@ -75,23 +79,68 @@
 
 #pragma mark - PrepareData
 
--(void)prepareData
+-(void)prepareRefreshData
 {
-    self.mainTableView.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
+    self.mainTableView.mj_header = [BearRefreshHeader headerWithRefreshingBlock:^{
         [self retrieveHomePageData];
     }];
+    
+    MJRefreshAutoNormalFooter *footer = [MJRefreshAutoNormalFooter footerWithRefreshingBlock:^{
+        if (self.homeModel.lists.count > 0) {
+            [self loadMoreHomePageData];
+        }
+        else{
+            [self retrieveHomePageData];
+        }
+    }];
+    footer.triggerAutomaticallyRefreshPercent = 0.5;
+    [footer setTitle:@"加载中" forState:MJRefreshStateRefreshing];
+    [footer setTitle:@"～已经到底了～" forState:MJRefreshStateNoMoreData];
+    self.mainTableView.mj_footer = footer;
+    //first loading
+    [self.mainTableView.mj_footer beginRefreshing];
 }
 
 -(void)retrieveHomePageData
 {
+    NSString *url = [URLJointTool jointHomeRedfeshUrlwithPage:1];
+    
     [JYNetworkRequest retrieveJsonWithPrepare:nil finish:^{
         [self.mainTableView.mj_header endRefreshing];
-    } needCache:YES requestType:HTTPRequestTypeGET fromURL:HOME_URL parameters:nil success:^(NSDictionary *json) {
-        NSLog(@"%@",json);
+        [self.mainTableView.mj_footer endRefreshing];
+    } needCache:YES requestType:HTTPRequestTypeGET fromURL:url parameters:nil success:^(NSDictionary *json) {
         if (json) {
             self.homeModel = nil;
             self.homeModel = [HomeModel mj_objectWithKeyValues:json];
             [self.mainTableView reloadData];
+        }
+    } failure:^(NSError *error, BOOL needCache, NSDictionary *cachedJson) {
+        NSLog(@"%@\n%@",error,cachedJson);
+    }];
+}
+
+-(void)loadMoreHomePageData
+{
+    NSUInteger page = (self.homeModel.lists.count / 10) + 1;
+    NSString *url = [URLJointTool jointHomeRedfeshUrlwithPage:page];
+    
+    [JYNetworkRequest retrieveJsonWithPrepare:nil finish:^{
+        if (self.homeModel.lists.count % 10) {
+            [self.mainTableView.mj_footer endRefreshingWithNoMoreData];
+        }
+        else{
+            [self.mainTableView.mj_footer endRefreshing];
+        }
+    } needCache:YES requestType:HTTPRequestTypeGET fromURL:url parameters:nil success:^(NSDictionary *json) {
+        if (json) {
+            HomeModel *homeModel = [HomeModel mj_objectWithKeyValues:json];
+            if (homeModel.lists.count > 0) {
+                NSArray <Lists *> *lastArr = self.homeModel.lists;
+                NSArray <Lists *> *nextArr = homeModel.lists;
+                NSArray <Lists *> *newArr = [lastArr arrayByAddingObjectsFromArray:nextArr];
+                self.homeModel.lists = newArr;
+                [self.mainTableView reloadData];
+            }
         }
     } failure:^(NSError *error, BOOL needCache, NSDictionary *cachedJson) {
         NSLog(@"%@\n%@",error,cachedJson);
