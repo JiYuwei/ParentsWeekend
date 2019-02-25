@@ -29,6 +29,7 @@
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
     if (self) {
         self.selectionStyle = UITableViewCellSelectionStyleNone;
+        self.clipsToBounds = YES;
         [self layoutAllViews];
     }
     return self;
@@ -43,7 +44,6 @@
         make.top.equalTo(self).offset(10);
         make.left.equalTo(self).offset(10);
         make.right.equalTo(self).offset(-10);
-        make.bottom.equalTo(self).offset(-70);
     }];
     
     [self.titleLabel mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -58,6 +58,7 @@
         make.left.equalTo(self).offset(10);
         make.right.equalTo(self).offset(-10);
         make.bottom.equalTo(self).offset(-5);
+        make.height.mas_equalTo(15);
     }];
     
     [self.priceLabel mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -76,8 +77,12 @@
     }
     [self.imgView sd_setImageWithURL:[NSURL URLWithString:_lists.pic] placeholderImage:[UIImage imageNamed:IMG_PLACEHOLDER]];
     self.titleLabel.text = _lists.name;
-    self.priceLabel.text = [NSString stringWithFormat:@"        ¥ %@",_lists.real_price];
     self.saleLabel.text = _lists.use_num;
+    
+    NSMutableAttributedString *price = [[NSMutableAttributedString alloc] initWithString:[NSString stringWithFormat:@"        ¥ %@",_lists.real_price]];
+    [price addAttribute:NSFontAttributeName value:[UIFont systemFontOfSize:16] range:NSMakeRange(8, 2)];
+    [price addAttribute:NSForegroundColorAttributeName value:[UIColor whiteColor] range:NSMakeRange(0, price.length)];
+    self.priceLabel.attributedText = price;
 }
 
 -(UIImageView *)imgView

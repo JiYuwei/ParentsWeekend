@@ -110,13 +110,20 @@
         [self.mainTableView.mj_footer endRefreshing];
     } needCache:YES requestType:HTTPRequestTypeGET fromURL:url parameters:nil success:^(NSDictionary *json) {
         if (json) {
-            self.homeModel = nil;
-            self.homeModel = [HomeModel mj_objectWithKeyValues:json];
-            [self.mainTableView reloadData];
+            [self buildFirstDatawithJson:json];
         }
     } failure:^(NSError *error, BOOL needCache, NSDictionary *cachedJson) {
-        NSLog(@"%@\n%@",error,cachedJson);
+        if (needCache) {
+            [self buildFirstDatawithJson:cachedJson];
+        }
     }];
+}
+
+-(void)buildFirstDatawithJson:(NSDictionary *)json
+{
+    self.homeModel = nil;
+    self.homeModel = [HomeModel mj_objectWithKeyValues:json];
+    [self.mainTableView reloadData];
 }
 
 -(void)loadMoreHomePageData
@@ -133,18 +140,25 @@
         }
     } needCache:YES requestType:HTTPRequestTypeGET fromURL:url parameters:nil success:^(NSDictionary *json) {
         if (json) {
-            HomeModel *homeModel = [HomeModel mj_objectWithKeyValues:json];
-            if (homeModel.lists.count > 0) {
-                NSArray <Lists *> *lastArr = self.homeModel.lists;
-                NSArray <Lists *> *nextArr = homeModel.lists;
-                NSArray <Lists *> *newArr = [lastArr arrayByAddingObjectsFromArray:nextArr];
-                self.homeModel.lists = newArr;
-                [self.mainTableView reloadData];
-            }
+            [self buildMoreDatawithJson:json];
         }
     } failure:^(NSError *error, BOOL needCache, NSDictionary *cachedJson) {
-        NSLog(@"%@\n%@",error,cachedJson);
+        if (needCache) {
+            [self buildMoreDatawithJson:cachedJson];
+        }
     }];
+}
+
+-(void)buildMoreDatawithJson:(NSDictionary *)json
+{
+    HomeModel *homeModel = [HomeModel mj_objectWithKeyValues:json];
+    if (homeModel.lists.count > 0) {
+        NSArray <Lists *> *lastArr = self.homeModel.lists;
+        NSArray <Lists *> *nextArr = homeModel.lists;
+        NSArray <Lists *> *newArr = [lastArr arrayByAddingObjectsFromArray:nextArr];
+        self.homeModel.lists = newArr;
+        [self.mainTableView reloadData];
+    }
 }
 
 #pragma mark - UITableViewDataSource & Delegate

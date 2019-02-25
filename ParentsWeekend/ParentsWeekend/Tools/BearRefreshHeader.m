@@ -38,6 +38,12 @@
     [super placeSubviews];
 //    self.stateLabel.hidden = YES;
     self.lastUpdatedTimeLabel.hidden = YES;
+    
+    CGPoint gifCenter = self.gifView.center;
+    CGPoint stateLBCenter = self.stateLabel.center;
+    
+    self.gifView.center = CGPointMake(gifCenter.x + 30, gifCenter.y);
+    self.stateLabel.center = CGPointMake(stateLBCenter.x + 20, stateLBCenter.y);
 }
 
 /*
