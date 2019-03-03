@@ -10,9 +10,6 @@
 #import "JYNetworkRequest.h"
 #import "JYRequestCache.h"
 
-static JYNetworkRequest *request;
-
-
 @interface JYNetworkRequest ()
 
 @property(nonatomic,strong)AFHTTPSessionManager *manager;
@@ -22,6 +19,7 @@ static JYNetworkRequest *request;
 
 @implementation JYNetworkRequest
 
+static JYNetworkRequest *request = nil;
 +(instancetype)sharedRequest
 {
     if (!request) {
